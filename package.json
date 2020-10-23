@@ -1,0 +1,41 @@
+{
+  "name": "@vue-reactivity/use",
+  "version": "0.0.1",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "repository": "https://github.com/vue-reactivity/use.git",
+  "author": "Anthony Fu <anthonyfu117@hotmail.com>",
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "prepare": "esno scripts/prepare.ts",
+    "build": "rollup -c",
+    "dev": "npm run build -- --watch",
+    "test": "c8 ava",
+    "release": "npx bumpp --tag --commit --push && pnpm publish --access public"
+  },
+  "dependencies": {
+    "@vue-reactivity/scope": "^0.2.0",
+    "@vue/reactivity": ">=3.0.0",
+    "@vue/shared": ">=3.0.0"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config-ts": "^0.3.3",
+    "@rollup/plugin-alias": "^3.1.1",
+    "@rollup/plugin-node-resolve": "^9.0.0",
+    "@types/node": "^14.11.8",
+    "@vueuse/core": "^4.0.0-beta.28",
+    "axios": "^0.20.0",
+    "eslint": "^7.11.0",
+    "esno": "^0.2.4",
+    "rollup-plugin-dts": "^1.4.13",
+    "rollup-plugin-typescript2": "^0.28.0",
+    "tsup": "^3.7.0",
+    "typescript": "^4.0.3",
+    "vue": "^3.0.2"
+  }
+}
