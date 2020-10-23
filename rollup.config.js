@@ -1,6 +1,6 @@
-import dts from 'rollup-plugin-dts'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
 import alias from '@rollup/plugin-alias'
+import dts from 'rollup-plugin-dts'
 
 export default [
   {
@@ -25,12 +25,13 @@ export default [
   },
   {
     input: 'src/index.ts',
+    external: ['@vue-reactivity/scope', 'vue-demi'],
     output: [
       {
         file: 'dist/index.d.ts',
         format: 'es',
       },
     ],
-    plugins: [dts()],
+    plugins: [dts({ respectExternal: true })],
   },
 ]

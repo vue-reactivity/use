@@ -12,26 +12,27 @@
   ],
   "sideEffects": false,
   "scripts": {
-    "prepare": "esno scripts/prepare.ts",
-    "build": "rollup -c",
-    "dev": "npm run build -- --watch",
+    "prepare": "npm run build",
+    "update": "esno scripts/update.ts",
+    "build": "npm run update && rollup -c && esno scripts/types-fix.ts",
+    "dev": "rollup -c --watch",
     "test": "c8 ava",
     "release": "npx bumpp --tag --commit --push && pnpm publish --access public"
   },
   "dependencies": {
-    "@vue-reactivity/scope": "^0.2.0",
-    "@vue/reactivity": ">=3.0.0",
-    "@vue/shared": ">=3.0.0"
+    "@vue-reactivity/scope": "^0.2.1"
   },
   "devDependencies": {
-    "@antfu/eslint-config-ts": "^0.3.3",
+    "@antfu/eslint-config-ts": "^0.3.4",
     "@rollup/plugin-alias": "^3.1.1",
     "@rollup/plugin-node-resolve": "^9.0.0",
-    "@types/node": "^14.11.8",
-    "@vueuse/core": "^4.0.0-beta.28",
+    "@types/node": "^14.14.2",
+    "@vueuse/core": "^4.0.0-beta.30",
+    "@vueuse/shared": "^4.0.0-beta.30",
     "axios": "^0.20.0",
     "eslint": "^7.11.0",
     "esno": "^0.2.4",
+    "rollup": "^2.32.1",
     "rollup-plugin-dts": "^1.4.13",
     "rollup-plugin-typescript2": "^0.28.0",
     "tsup": "^3.7.0",
