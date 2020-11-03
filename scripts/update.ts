@@ -1,4 +1,5 @@
 import { promises as fs } from 'fs'
+import { execSync } from 'child_process'
 import axios from 'axios'
 
 const categoriesNames = ['Utilities']
@@ -8,7 +9,6 @@ function getPackages(categories: any) {
     .filter(([key]) => categoriesNames.includes(key))
     .flatMap(([k, v]) => v)
     .filter((i: any) => !i.depreacted)
-   
 }
 
 function getExports(categories: any) {
@@ -17,32 +17,34 @@ function getExports(categories: any) {
     .join(', ')
 }
 
-async function updateREADME(data: any) { 
+async function updateREADME(data: any) {
   const functions = [
     ...getPackages(data.core.categories),
-    ...getPackages(data.shared.categories)
+    ...getPackages(data.shared.categories),
   ]
-    .map(({ name, docs, description}: any) => `  - [\`${name}\`](${docs}) - ${description}`)
+    .map(({ name, docs, description }: any) => `  - [\`${name}\`](${docs}) - ${description}`)
     .join('\n')
-  
-  
+
   let readme = await fs.readFile('README.md', 'utf-8')
 
   readme = readme.replace(/<!--FUNCTIONS_LIST_STARTS-->[\s\S]+?<!--FUNCTIONS_LIST_ENDS-->/m, `<!--FUNCTIONS_LIST_STARTS-->\n\n${functions}\n\n<!--FUNCTIONS_LIST_ENDS-->`)
-  
+
   await fs.writeFile('README.md', readme, 'utf-8')
 }
 
 async function run() {
+  execSync('npx taze -w', { stdio: 'inherit' })
+  execSync('npm i', { stdio: 'inherit' })
+
   const { data } = await axios.get(
-    'https://raw.githubusercontent.com/antfu/vueuse/master/indexes.json'
+    'https://raw.githubusercontent.com/antfu/vueuse/master/indexes.json',
   )
 
   await fs.writeFile(
     'src/index.ts',
-    `export { ${getExports(data.core.categories)} } from '@vueuse/core'\n` +
-    `export { ${getExports(data.shared.categories)} } from '@vueuse/shared'\n`,
-    'utf-8'
+    `export { ${getExports(data.core.categories)} } from '@vueuse/core'\n`
+    + `export { ${getExports(data.shared.categories)} } from '@vueuse/shared'\n`,
+    'utf-8',
   )
 
   updateREADME(data)

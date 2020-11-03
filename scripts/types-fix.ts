@@ -1,5 +1,5 @@
-import fg from 'fast-glob'
 import { promises as fs } from 'fs'
+import fg from 'fast-glob'
 
 export async function fixTypingOutput() {
   const files = await fg(['dist/*.d.ts'], {

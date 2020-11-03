@@ -30,9 +30,11 @@ npm i @vue-reactivity/<b>use</b>
   - [`useRefHistory`](https://vueuse.js.org/?path=/story/utilities--userefhistory) - track the change history of a ref
   - [`useThrottle`](https://vueuse.js.org/?path=/story/utilities--usethrottle) - throttle changing of a ref value
   - [`useThrottleFn`](https://vueuse.js.org/?path=/story/utilities--usethrottlefn) - throttle execution of a function
+  - [`biSyncRef`](https://vueuse.js.org/?path=/story/utilities--bisyncref) - two-way refs synchronization
   - [`controlledComputed`](https://vueuse.js.org/?path=/story/utilities--controlledcomputed) - explicitly define the deps of computed
   - [`extendRef`](https://vueuse.js.org/?path=/story/utilities--extendref) - add extra attributes to Ref
   - [`makeDestructurable`](https://vueuse.js.org/?path=/story/utilities--makedestructurable) - make isomorphic destructurable for object and array at the same time
+  - [`syncRef`](https://vueuse.js.org/?path=/story/utilities--syncref) - keep target refs in sync with a source ref
   - [`tryOnMounted`](https://vueuse.js.org/?path=/story/utilities--tryonmounted) - safe `onMounted`
   - [`tryOnUnmounted`](https://vueuse.js.org/?path=/story/utilities--tryonunmounted) - safe `onUnmounted`
   - [`when`](https://vueuse.js.org/?path=/story/utilities--when) - promised one-time watch for ref changes
