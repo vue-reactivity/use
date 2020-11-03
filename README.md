@@ -3,7 +3,7 @@
 </p>
 
 <p align='center'>
-Utilities from <a href='https://github.com/antfu/vueuse'>VueUse</a> that works for <a href="https://github.com/vuejs/vue-next/tree/master/packages/reactivity"><code>@vue/reactivity</code></a>
+Utilities from <a href='https://github.com/antfu/vueuse'>VueUse</a> that work for <a href="https://github.com/vuejs/vue-next/tree/master/packages/reactivity"><code>@vue/reactivity</code></a>
 </p>
 
 <p align='center'>
