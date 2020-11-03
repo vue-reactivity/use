@@ -17,7 +17,7 @@
     "build": "rollup -c && esno scripts/types-fix.ts",
     "dev": "rollup -c --watch",
     "test": "c8 ava",
-    "release": "npx bumpp --tag --commit --push && pnpm publish --access public"
+    "release": "npx bumpp --tag --commit --push && npm publish --access public"
   },
   "dependencies": {
     "@vue-reactivity/scope": "^0.2.1"
